@@ -1,0 +1,10 @@
+//COPY AND PASTABLE LIBRARIES FOR ARDUINO PROGRAMMING
+
+//IO Libs
+#include <Stdio.h>
+
+//Motor Libs
+#include <Servo.h>
+
+//Indicators - LED Libs
+#include <Adafruit_NeoPixel.h>
