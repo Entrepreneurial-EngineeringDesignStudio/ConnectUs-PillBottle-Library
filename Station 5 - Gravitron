@@ -1,4 +1,3 @@
-
 //Variables
 const int relay_pin = 10; //Digital pin connected to relay that switches CC/CV Buck leading to UV lights ON/OFF
 int UV_time = 30;
