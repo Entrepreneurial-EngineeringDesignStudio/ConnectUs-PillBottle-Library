@@ -1,0 +1,51 @@
+int controlPin = 9; 
+int buttonPin = A0;
+
+int maxRev = 255;
+int cycleTime = 10000;
+
+void setup() {
+  Serial.begin(9600);
+  
+  pinMode(controlPin, OUTPUT);
+  
+  pinMode(buttonPin, INPUT_PULLUP);
+}
+
+void loop() {
+
+  int buttonState = digitalRead(buttonPin);
+  
+  if (buttonState == LOW) {
+    Serial.println("Button Pressed");
+
+    rampUp(maxRev);
+    delay(cycleTime);
+    rampDown(maxRev);
+    
+    delay(500); 
+  }
+  
+}
+
+void rampUp(int topRPM){
+
+    for(float i=0; i<=topRPM; i++){
+      
+      analogWrite(controlPin, i); 
+      delay(40);
+
+    }
+  
+}
+
+void rampDown(int topRPM){
+
+    for(float i=topRPM; i > 0; i-=1){
+      
+      analogWrite(controlPin, i); 
+      delay(40);
+
+    }
+  
+}
