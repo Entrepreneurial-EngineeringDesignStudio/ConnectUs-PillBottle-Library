@@ -1,0 +1,32 @@
+//Variables
+const int relay_pin = 10; //Digital pin connected to relay that switches CC/CV Buck leading to UV lights ON/OFF
+int UV_time = 30;
+
+//Function Prototypes
+void sanitize(int interval, int pin);
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(relay_pin, OUTPUT);
+  digitalWrite(relay_pin, LOW); // UV begins turned off
+}
+
+void loop() {
+  if (Serial.available()) {
+    char c = Serial.read();
+    
+    if (c == '1') {
+      sanitize(UV_time, relay_pin); // Right now UV lights are activated by typing '1'in the Serial Monitor
+    }
+  }
+}
+
+void sanitize(int interval, int pin){ // Activates UV lights for a set time interval
+  digitalWrite(pin, HIGH);
+  for(int i = 0; i<=interval; ++i){
+    String output = String(i) + "s";
+    Serial.println(output);
+    delay(1000);
+    }
+  digitalWrite(pin, LOW);
+}
