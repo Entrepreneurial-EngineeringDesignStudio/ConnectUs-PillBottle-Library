@@ -1,8 +1,8 @@
-int controlPin = 9; 
-int buttonPin = A0;
+const int controlPin = 9; 
+const int buttonPin = A0;
 
-int maxRev = 255;
-int cycleTime = 10000;
+const int maxRev = 255;
+const int cycleTime = 10000;
 
 void setup() {
   Serial.begin(9600);
