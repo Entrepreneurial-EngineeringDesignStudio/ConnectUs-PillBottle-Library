@@ -1,0 +1,34 @@
+//INSTRUCTIONS FOR ARDUINO UNO BOARD
+//Connect relay signal to pin 6, button to pin 5
+//Connect the positive side of the 12V power supply to COM on relay
+//Connect relay pin ON to the positive end of the motor
+//Connect motor negative terminal to negative power supply terminal
+
+const int relay_pin = 6;
+const int button_pin = 5;
+const int interval = 200; 
+
+bool last_button_state = HIGH;
+
+void setup() {
+  pinMode(relay_pin, OUTPUT);
+  pinMode(button_pin, INPUT_PULLUP);
+  digitalWrite(relay_pin, LOW);
+}
+
+void loop() {
+  bool current_button_state = digitalRead(button_pin);
+
+  if (current_button_state == LOW && last_button_state == HIGH) {
+    
+    digitalWrite(relay_pin, HIGH);
+    
+    delay(interval);
+
+    digitalWrite(relay_pin, LOW);
+    
+    delay(50);
+  }
+
+  last_button_state = current_button_state;
+}
